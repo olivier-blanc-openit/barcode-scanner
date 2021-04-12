@@ -11,6 +11,7 @@ import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
+import android.util.Base64;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -21,6 +22,7 @@ import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 import com.google.zxing.BarcodeFormat;
+import com.google.zxing.ResultMetadataType;
 import com.google.zxing.ResultPoint;
 import com.journeyapps.barcodescanner.BarcodeCallback;
 import com.journeyapps.barcodescanner.BarcodeResult;
@@ -265,6 +267,15 @@ public class BarcodeScanner extends Plugin implements BarcodeCallback {
         if (barcodeResult.getText() != null) {
             jsObject.put("hasContent", true);
             jsObject.put("content", barcodeResult.getText());
+
+            if (barcodeResult.getResultMetadata().containsKey(ResultMetadataType.BYTE_SEGMENTS)) {
+                List<byte[]> segments = (List) barcodeResult.getResultMetadata().get(ResultMetadataType.BYTE_SEGMENTS);
+                List<String> base64Segments = new ArrayList();
+                for (int i = 0; i < segments.size(); i++) {
+                    base64Segments.add(Base64.encodeToString(segments.get(i), Base64.NO_WRAP));
+                }
+                jsObject.put("base64Segments", JSArray.from(base64Segments.toArray()));
+            }
         } else {
             jsObject.put("hasContent", false);
         }

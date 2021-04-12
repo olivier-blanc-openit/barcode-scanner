@@ -48,6 +48,7 @@ export interface ScanOptions {
 export interface ScanResult {
   hasContent: boolean;
   content?: string;
+  base64Segments?: string[];
 }
 
 export interface CheckPermissionOptions {
