@@ -1,7 +1,7 @@
 {
-  "name": "@capacitor-community/barcode-scanner",
-  "version": "1.2.1",
-  "description": "A fast and efficient (QR) barcode scanner for Capacitor",
+  "name": "@openit/capacitor-community-barcode-scanner",
+  "version": "1.2.1-base64.1",
+  "description": "A fast and efficient (QR) barcode scanner for Capacitor - forked for OpenIT",
   "main": "dist/plugin.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -64,12 +64,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DutchConcepts/capacitor-barcode-scanner.git"
+    "url": "git+https://github.com/olivier-blanc-openit/barcode-scanner.git"
   },
-  "bugs": {
-    "url": "https://github.com/DutchConcepts/capacitor-barcode-scanner/issues"
-  },
-  "homepage": "https://github.com/DutchConcepts/capacitor-barcode-scanner#readme",
+  "homepage": "https://github.com/olivier-blanc-openit/barcode-scanner/tree/base64Segments",
   "directories": {
     "example": "examples"
   },
